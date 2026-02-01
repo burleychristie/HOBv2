@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+}
+
+body{
+  background: #F4F1EC;
+  color: #121212;
+}
+
+::selection{
+  background: rgba(198,164,107,0.35);
+}
+
+.prose-lite p{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-lite ul{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.prose-lite li{
+  margin: 0.25rem 0;
+}
