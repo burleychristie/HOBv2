@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NavLink } from "@/components/ui/nav-link";
+import { LogoMark } from "@/components/logo-mark";
 
 export function SiteHeader() {
   return (
@@ -7,7 +8,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="group flex items-center gap-3">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-white/40">
-            <span className="font-serif text-lg">⌂</span>
+            <LogoMark className="h-5 w-5 text-black/80" />
           </span>
           <div className="leading-tight">
             <div className="font-serif text-lg">House of Become</div>

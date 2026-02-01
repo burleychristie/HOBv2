@@ -18,11 +18,11 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   title: "House of Become",
-  description: "Fine jewelry for women in transition — moments of becoming, not arrival.",
+  description: "Jewellery to celebrate transition - moments of becoming.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
     title: "House of Become",
-    description: "Jewelry that marks the moment you chose yourself — even if no one else knows.",
+    description: "Jewellery to celebrate transition - moments of becoming.",
     type: "website",
   },
 };

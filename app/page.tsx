@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
-import { content } from "@/lib/content";
+import { site, products } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
-import { ProductGrid } from "@/components/product-grid";
-import { QuoteCard } from "@/components/quote-card";
+import { ProductCard } from "@/components/product-card";
+import { LogoMark } from "@/components/logo-mark";
 
 export default function HomePage() {
   return (
@@ -16,14 +16,24 @@ export default function HomePage() {
             <div className="md:col-span-7">
               <Reveal>
                 <p className="font-sans text-xs tracking-[0.32em] uppercase text-black/65">
-                  Fine jewelry for crossings
+                  {site.brand.heroKicker}
                 </p>
-                <h1 className="mt-5 font-serif text-5xl leading-[0.95] md:text-7xl">
-                  House of <span className="italic">Become</span>
-                </h1>
+                <div className="relative">
+                  <div className="pointer-events-none absolute -left-6 -top-10 opacity-[0.06]">
+                    <LogoMark className="h-40 w-40 text-black" />
+                  </div>
+                  <div className="relative">
+                  <div className="pointer-events-none absolute -left-6 -top-10 opacity-[0.06]">
+                    <LogoMark className="h-40 w-40 text-black" />
+                  </div>
+                  <h1 className="mt-5 font-serif text-5xl leading-[0.95] md:text-7xl">
+                    {site.brand.heroHeadline.split(" ")[0]}{" "}
+                    <span className="italic">{site.brand.heroHeadline.split(" ").slice(1).join(" ")}</span>
+                  </h1>
+                </div>
+                </div>
                 <p className="mt-6 max-w-xl font-sans text-base leading-relaxed text-black/75">
-                  Jewelry for women in transition — moments of <span className="font-medium">BECOMING</span>, not arrival.
-                  A marker of internal change, not external status.
+                  {site.brand.heroSubhead}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button asChild>
@@ -40,12 +50,16 @@ export default function HomePage() {
               <Reveal delay={0.08}>
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-black/5 shadow-sm">
                   <Image
-                    src="/images/concept/packaging.png"
-                    alt="House of Become packaging"
+                    src="/images/editorial/hero-pendant-book.png"
+                    alt="Threshold Arch pendant"
                     fill
                     className="object-cover"
                     priority
                   />
+
+                  <div className="absolute left-6 top-6 rounded-full border border-white/30 bg-white/20 p-3 backdrop-blur">
+                    <LogoMark className="h-6 w-6 text-white" />
+                  </div>
                 </div>
               </Reveal>
             </div>
@@ -56,88 +70,57 @@ export default function HomePage() {
       <Section
         id="problem"
         eyebrow="The Problem"
-        title="Fine jewelry still over-indexes on weddings, gifting, and trend cycles."
+        title={site.home.problem.title}
         body={
           <div className="prose-lite font-sans text-black/75">
-            <p>Existing fine jewelry brands often:</p>
             <ul>
-              <li>over-index on weddings and gifting</li>
-              <li>rely on trend cycles</li>
-              <li>lack emotional resonance for everyday self-purchase</li>
+              {site.home.problem.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
             </ul>
-            <p>
-              Women are no longer waiting to be gifted jewelry. They are buying for themselves — and they want pieces
-              that feel intentional, permanent, wearable daily, and personally meaningful.
-            </p>
+            <p>{site.home.problem.close}</p>
           </div>
         }
         media={
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-black/5">
-            <Image src="/images/concept/problem.png" alt="Problem — concept deck" fill className="object-cover" />
+            <Image
+              src="/images/products/ring-solitaire.png"
+              alt="Threshold ring — close-up"
+              fill
+              className="object-cover"
+            />
           </div>
         }
-      />
-
-      <Section
-        id="proposal"
-        eyebrow="Our Proposal"
-        title="Jewelry that marks becoming."
-        body={
-          <div className="prose-lite font-sans text-black/75">
-            <p>
-              We position jewelry as a marker of internal change — not beginnings, not endings — but crossings.
-            </p>
-            <p className="mt-4">
-              <span className="font-medium">This jewelry marks the moment you chose yourself</span> — even if no one else knows.
-            </p>
-            <QuoteCard quote="Forms designed to be worn through all activities and seasons of life." caption="House of Become — Principles" />
-          </div>
-        }
-        media={
-          <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-black/5">
-            <Image src="/images/concept/proposal.png" alt="Proposal — concept deck" fill className="object-cover" />
-          </div>
-        }
-        reverse
       />
 
       <Section
         id="threshold"
         eyebrow="Collection"
-        title="The Threshold Collection"
+        title={site.home.threshold.title}
         body={
           <div className="prose-lite font-sans text-black/75">
-            <p>{content.thresholdIntro}</p>
-            <p>{content.thresholdMeaning}</p>
+            <p>{site.home.threshold.intro}</p>
+            <p>{site.home.threshold.meaning}</p>
+
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild variant="outline"><Link href="/collection#arch-pendants">Arch Pendants</Link></Button>
-              <Button asChild variant="outline"><Link href="/collection#rings">Rings</Link></Button>
-              <Button asChild variant="outline"><Link href="/collection#packaging">Packaging</Link></Button>
+              <Button asChild><Link href="/collection">{site.home.threshold.cta}</Link></Button>
+              <Button asChild variant="ghost"><Link href="/collection#arch-pendants">Arch Pendants</Link></Button>
+              <Button asChild variant="ghost"><Link href="/collection#rings">Rings</Link></Button>
+            </div>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[...products.archPendants, ...products.rings].map((p) => (
+                <ProductCard key={p.slug} product={p} compact />
+              ))}
             </div>
           </div>
         }
         media={
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-black/5">
-            <Image src="/images/concept/threshold.png" alt="Threshold — concept deck" fill className="object-cover" />
+            <Image src="/images/products/arch-emerald.png" alt="Threshold Arch pendant" fill className="object-cover" />
           </div>
         }
       />
-
-      <section className="border-t border-black/10 bg-paper">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <p className="font-sans text-xs tracking-[0.32em] uppercase text-black/60">Featured pieces</p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight">Designed for everyday self-purchase.</h2>
-            </div>
-            <div className="hidden md:block">
-              <Button asChild variant="ghost"><Link href="/collection">View the collection</Link></Button>
-            </div>
-          </div>
-
-          <div className="mt-10"><ProductGrid /></div>
-        </div>
-      </section>
 
       <Section
         id="principles"
@@ -146,16 +129,20 @@ export default function HomePage() {
         body={
           <div className="prose-lite font-sans text-black/75">
             <ul>
-              <li>Solid 14k or 18k gold only</li>
-              <li>Lab-grown stones</li>
-              <li>Sweat-proof, water-safe, designed for continuous daily wear</li>
-              <li>No plating, no costume finishes</li>
+              {site.home.principles.items.map((i) => (
+                <li key={i}>{i}</li>
+              ))}
             </ul>
           </div>
         }
         media={
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-black/5">
-            <Image src="/images/concept/principles.png" alt="Design principles — concept deck" fill className="object-cover" />
+            <Image
+              src="/images/editorial/design-principles.png"
+              alt="Design principles"
+              fill
+              className="object-cover"
+            />
           </div>
         }
         reverse
@@ -167,7 +154,7 @@ export default function HomePage() {
         title="A ritual of receiving — even when you bought it for yourself."
         body={
           <div className="prose-lite font-sans text-black/75">
-            <p>{content.packaging}</p>
+            <p>{site.home.packaging.body}</p>
             <div className="mt-6"><Button asChild variant="outline"><Link href="/collection#packaging">See packaging details</Link></Button></div>
           </div>
         }

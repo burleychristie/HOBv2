@@ -11,7 +11,7 @@ export default function CollectionPage() {
           <h1 className="mt-5 font-serif text-5xl leading-[1] md:text-6xl">The Threshold Collection</h1>
           <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-black/75">
             Centered on the arch as a symbol of passage — pieces designed to be worn daily as a reminder of your strength,
-            resilience, leadership, and powerfulness.
+            resilience, leadership, and self-trust.
           </p>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function CollectionPage() {
           </div>
 
           <div className="mt-10 relative aspect-[16/9] overflow-hidden rounded-3xl bg-black/5">
-            <Image src="/images/concept/rings.png" alt="Rings — concept deck" fill className="object-cover" />
+            <Image src="/images/products/ring-band.png" alt="Rings" fill className="object-cover" />
           </div>
         </div>
       </section>
@@ -54,7 +54,7 @@ export default function CollectionPage() {
               </ul>
             </div>
             <div className="md:col-span-7 relative aspect-[16/10] overflow-hidden rounded-3xl bg-black/5">
-              <Image src="/images/concept/principles.png" alt="Design principles imagery" fill className="object-cover" />
+              <Image src="/images/editorial/design-principles.png" alt="Design principles" fill className="object-cover" />
             </div>
           </div>
         </div>

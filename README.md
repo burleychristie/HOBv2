@@ -1,24 +1,45 @@
 # House of Become — Website
 
-A Next.js + Tailwind site for **House of Become**.
+Next.js + Tailwind site for House of Become.
 
-## Local dev
+## Quick start
+
 ```bash
 npm install
 npm run dev
 ```
 
-## Deploy to Vercel
+## The only file you usually need to edit
+
+### 1) Copy + products
+Open:
+
+`lib/site-data.ts`
+
+That file controls:
+- Home page text (hero, problem statement, Threshold intro, packaging copy)
+- Story page text
+- All products (name, subtitle, price, details, image path)
+
+### 2) Images
+Images live in:
+- `public/images/products/` (product shots)
+- `public/images/editorial/` (lifestyle / section photos)
+- `public/images/concept/` (any temporary concept deck assets)
+
+If you replace an image file but keep the same filename, you **don’t need to change any code**.
+
+Current key filenames:
+- Hero: `public/images/editorial/hero-pendant-book.png`
+- Design principles image: `public/images/editorial/design-principles.png`
+- Products:
+  - `public/images/products/arch-emerald.png`
+  - `public/images/products/arch-pear.png`
+  - `public/images/products/arch-round.png`
+  - `public/images/products/ring-band.png`
+  - `public/images/products/ring-solitaire.png`
+
+## Deploy (Vercel)
 - Push this repo to GitHub
-- Import the repo in Vercel
-- Framework preset: **Next.js**
-- Build command: `npm run build`
-
-## Content
-Update copy + data in:
-- `lib/content.ts`
-- `lib/stories.ts`
-
-## Notes
-- The contact page uses a `mailto:` link by default.
-- If you want a real form submission, wire a Vercel route with Resend/Postmark and add env vars.
+- Import into Vercel
+- Deploy (Vercel auto-detects Next.js)
